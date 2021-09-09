@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Button, TouchableOpacity, Image } from 'react-native'
+
 import {css} from '../assets/css/css'
 
 export default function Qr({navigation}) {

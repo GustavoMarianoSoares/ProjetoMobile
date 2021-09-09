@@ -9,17 +9,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Qr from './views/Qr';
 import Cardapio from './views/Cardapio';
+import Comida from './views/Comida';
 
 export default function App() {
 
   const Stack = createNativeStackNavigator();
 
   return (
+
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Ler QR Code" component={Qr} />
         <Stack.Screen name="Cardápio" component={Cardapio} />
+        <Stack.Screen name="Comida" component={Comida} />
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 }

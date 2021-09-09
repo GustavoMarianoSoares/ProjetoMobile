@@ -8,6 +8,19 @@ const css = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  texto:{
+    fontSize: 24,
+    marginBottom: 20,
+    padding: 30,
+    backgroundColor:'pink'
+  },
+
+  texto2:{
+    fontSize: 24,
+    marginBottom: 20,
+    padding: 30,
+  },
 });
 
 export {css};
