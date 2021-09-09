@@ -1,12 +1,25 @@
 
 import React from 'react';
-import {Text, View } from 'react-native';
+import {Text, View, Image } from 'react-native';
+
 import {css} from './assets/css/css'
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import Qr from './views/Qr';
+import Cardapio from './views/Cardapio';
+
 export default function App() {
+
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={css.container}>
-      <Text>EXPO é bala</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Ler QR Code" component={Qr} />
+        <Stack.Screen name="Cardápio" component={Cardapio} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
