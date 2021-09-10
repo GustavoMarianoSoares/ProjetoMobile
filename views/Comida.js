@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { View, Text,Image, Button } from 'react-native'
+import { View, Text,Image, Button, SafeAreaView } from 'react-native'
 
 import {css} from '../assets/css/css'
 
@@ -8,6 +8,7 @@ export default function Comida() {
     const [quantity,setQuantity]=useState (0);
 
     return (
+    <SafeAreaView style={css.container}>
         <View style={css.container}>
 
             <Image
@@ -35,9 +36,11 @@ export default function Comida() {
             <Button
                 title="Adicionar ao carrinho"
                 color="#FB6400"
+                onPress={() => setQuantity(quantity == 0)}
             />
             </View>
 
         </View>
+    </SafeAreaView>
     )
 }
