@@ -7,15 +7,24 @@ import {
   SafeAreaView,
 } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import api from "./api";
 
 import { css } from "../assets/css/css";
 
-export default function Cardapio({ navigation }) {
-  //Futura API
-  const [people, setPeople] = useState([
-    { name: "Feijoada", id: "1" },
-    { name: "Arroz", id: "2" },
-  ]);
+const Cardapio = ({ navigation }) => {
+  //API
+
+  const [pontosTuristicos, setPontosTuristicos] = useState([]);
+
+  useEffect(() => {
+    getPontosTuristicos();
+  }, []);
+
+  function getPontosTuristicos() {
+    api.get("ponto-turistico/").then((response) => {
+      setPontosTuristicos(response.data);
+    });
+  }
 
   //Leitura QR Code
   const [hasPermission, setHasPermission] = useState(null);
@@ -44,15 +53,14 @@ export default function Cardapio({ navigation }) {
                 */
       />
 
-      <FlatList
-        keyExtractor={(item) => item.id}
-        data={people}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate("Comida")}>
-            <Text style={css.texto}>{item.name}</Text>
+      <View style={css.container}>
+        {pontosTuristicos.map((item) => (
+          <TouchableOpacity style={css.texto} key={item.id}>
+            <Text>{item.nome}</Text>
           </TouchableOpacity>
-        )}
-      />
+        ))}
+      </View>
     </SafeAreaView>
   );
-}
+};
+export default Cardapio;
